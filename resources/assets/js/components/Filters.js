@@ -11,7 +11,8 @@ class Filters extends Component {
         this.state = {
             country_id: -1,
             universities: [],
-            majors: []
+            majors: [],
+            sort: 1
         };
         this.handleSort = this.handleSort.bind(this);
     }
@@ -64,39 +65,48 @@ class Filters extends Component {
     handleSort(index) {
         console.log(index);
         console.log("LY");
-        // debugger;
-        // var sorter = [
-        //     {
-        //         sort: function(list) {
-        //             list.sort((a, b) => (a.name > b.name ? 1 : -1));
-        //         }
-        //     },
-        //     {
-        //         sort: function(list) {
-        //             list.sort((a, b) => (a.hour_cost > b.hour_cost ? 1 : -1));
-        //         }
-        //     },
-        //     {
-        //         sort: function(list) {
-        //             list.sort((a, b) =>
-        //                 a.minimum_average > b.minimum_average ? 1 : -1
-        //             );
-        //         }
-        //     },
-        //     {
-        //         sort: function(list) {
-        //             list.sort((a, b) =>
-        //                 a.university.name > b.university.name ? 1 : -1
-        //             );
-        //         }
-        //     }
-        // ];
+        const sort = this.state.sort;
+        var sorter = [
+            {
+                sort: function(list) {
+                    list.sort((a, b) =>
+                        a.name > b.name ? sort * 1 : sort * -1
+                    );
+                }
+            },
+            {
+                sort: function(list) {
+                    list.sort((a, b) =>
+                        a.hour_cost > b.hour_cost ? sort * 1 : sort * -1
+                    );
+                }
+            },
+            {
+                sort: function(list) {
+                    list.sort((a, b) =>
+                        a.minimum_average > b.minimum_average
+                            ? sort * 1
+                            : sort * -1
+                    );
+                }
+            },
+            {
+                sort: function(list) {
+                    list.sort((a, b) =>
+                        a.university.name > b.university.name
+                            ? sort * 1
+                            : sort * -1
+                    );
+                }
+            }
+        ];
 
-        // var majors = this.state.majors;
-        // sorter[index].sort(majors);
-        // this.setState({
-        //     majors
-        // });
+        var majors = this.state.majors;
+        sorter[index].sort(majors);
+        this.setState({
+            majors,
+            sort: sort * -1
+        });
         // console.log(index);
     }
     render() {
@@ -108,10 +118,7 @@ class Filters extends Component {
                     value={this.state.universities}
                     onChange={e => this.handleChangeUni()}
                 />
-                <Table
-                    value={this.state.majors}
-                    onClick={e => this.handleSort()}
-                />
+                <Table value={this.state.majors} onClick={this.handleSort} />
             </div>
         );
     }

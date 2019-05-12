@@ -8,14 +8,16 @@ class Table extends Component {
 
     render() {
         var majors = this.props.value;
-
+        console.log(this.props);
         return (
             <table className="table table-dark">
                 <tr>
-                    <th onClick={() => this.props.onClick(1)}>Name</th>
-                    <th>Hour Cost</th>
-                    <th>Minimum Average</th>
-                    <th>University</th>
+                    <th onClick={() => this.props.onClick(0)}>Name</th>
+                    <th onClick={() => this.props.onClick(1)}>Hour Cost</th>
+                    <th onClick={() => this.props.onClick(2)}>
+                        Minimum Average
+                    </th>
+                    <th onClick={() => this.props.onClick(3)}>University</th>
                 </tr>
                 {majors.map(major => (
                     <tr>
