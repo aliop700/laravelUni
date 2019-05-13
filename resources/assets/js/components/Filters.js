@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import CountryList from "./CountryList";
 import UniversityList from "./UniversityList";
 import Table from "./Table";
@@ -15,10 +14,10 @@ class Filters extends Component {
             sort: 1
         };
         this.handleSort = this.handleSort.bind(this);
+        this.handleChangeUni = this.handleChangeUni.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
-    handleChange() {
-        console.log(document.getElementById("#country"));
-        var country_id = document.getElementById("#country").value;
+    handleChange(country_id) {
         if (country_id != -1)
             axios
                 .get(`/api/countries/${country_id}/universities`)
@@ -34,9 +33,7 @@ class Filters extends Component {
                 universities: []
             });
     }
-    handleChangeUni() {
-        console.log(document.getElementById("#university"));
-        var university_id = document.getElementById("#university").value;
+    handleChangeUni(university_id) {
         var country_id = this.state.country_id;
         if (university_id != -1)
             axios
@@ -63,8 +60,6 @@ class Filters extends Component {
         });
     }
     handleSort(index) {
-        console.log(index);
-        console.log("LY");
         const sort = this.state.sort;
         var sorter = [
             {
@@ -107,17 +102,24 @@ class Filters extends Component {
             majors,
             sort: sort * -1
         });
-        // console.log(index);
     }
     render() {
         return (
             <div>
-                <SearchComponent onClick={e => this.handleSearch()} />
-                <CountryList onChange={e => this.handleChange()} />
-                <UniversityList
-                    value={this.state.universities}
-                    onChange={e => this.handleChangeUni()}
-                />
+                <div className="row">
+                    <div className="col-md-4">
+                        <SearchComponent onClick={e => this.handleSearch()} />
+                    </div>
+                    <div className="col-md-4">
+                        <CountryList onChange={this.handleChange} />
+                    </div>
+                    <div className="col-md-4">
+                        <UniversityList
+                            value={this.state.universities}
+                            onChange={this.handleChangeUni}
+                        />
+                    </div>
+                </div>
                 <Table value={this.state.majors} onClick={this.handleSort} />
             </div>
         );

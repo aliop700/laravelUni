@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 class CountryList extends Component {
     constructor() {
@@ -21,7 +20,11 @@ class CountryList extends Component {
     render() {
         const { countries } = this.state;
         return (
-            <select id="#country" onChange={() => this.props.onChange()}>
+            <select
+                id="#country"
+                className="form-control mb-2"
+                onChange={e => this.props.onChange(e.target.value)}
+            >
                 <option value="-1">Please choose country</option>
                 {countries.map(country => (
                     <option value={country.id}>{country.name}</option>

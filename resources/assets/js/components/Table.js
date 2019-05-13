@@ -12,12 +12,30 @@ class Table extends Component {
         return (
             <table className="table table-dark">
                 <tr>
-                    <th onClick={() => this.props.onClick(0)}>Name</th>
-                    <th onClick={() => this.props.onClick(1)}>Hour Cost</th>
-                    <th onClick={() => this.props.onClick(2)}>
+                    <th
+                        style={{ cursor: "pointer" }}
+                        onClick={() => this.props.onClick(0)}
+                    >
+                        Name
+                    </th>
+                    <th
+                        style={{ cursor: "pointer" }}
+                        onClick={() => this.props.onClick(1)}
+                    >
+                        Hour Cost
+                    </th>
+                    <th
+                        style={{ cursor: "pointer" }}
+                        onClick={() => this.props.onClick(2)}
+                    >
                         Minimum Average
                     </th>
-                    <th onClick={() => this.props.onClick(3)}>University</th>
+                    <th
+                        style={{ cursor: "pointer" }}
+                        onClick={() => this.props.onClick(3)}
+                    >
+                        University
+                    </th>
                 </tr>
                 {majors.map(major => (
                     <tr>

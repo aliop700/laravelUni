@@ -7,19 +7,24 @@ class SearchComponent extends Component {
 
     render() {
         return (
-            <div>
+            <div className="input-group mb-3">
                 <input
                     type="text"
-                    Style="margin: 0 auto"
                     className="form-control"
+                    placeholder="Search"
+                    aria-label="Search"
+                    aria-describedby="basic-addon2"
                     id="searchbox"
                 />
-                <button
-                    className="btn btn-primary btn-lg"
-                    onClick={() => this.props.onClick()}
-                >
-                    Search
-                </button>
+                <div className="input-group-append">
+                    <button
+                        className="btn btn-outline-secondary"
+                        onClick={() => this.props.onClick()}
+                        type="button"
+                    >
+                        Search
+                    </button>
+                </div>
             </div>
         );
     }

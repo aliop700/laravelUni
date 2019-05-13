@@ -16339,7 +16339,6 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(4);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16347,7 +16346,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -16386,9 +16384,13 @@ var CountryList = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                 "select",
-                { id: "#country", onChange: function onChange() {
-                        return _this3.props.onChange();
-                    } },
+                {
+                    id: "#country",
+                    className: "form-control mb-2",
+                    onChange: function onChange(e) {
+                        return _this3.props.onChange(e.target.value);
+                    }
+                },
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                     "option",
                     { value: "-1" },
@@ -16452,9 +16454,13 @@ var UniversityList = function (_Component) {
             var universities = this.props.value;
             return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                 "select",
-                { id: "#university", onChange: function onChange() {
-                        return _this2.props.onChange();
-                    } },
+                {
+                    id: "#university",
+                    className: "form-control mb-2",
+                    onChange: function onChange(e) {
+                        return _this2.props.onChange(e.target.value);
+                    }
+                },
                 __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                     "option",
                     { value: "-1" },
@@ -39233,9 +39239,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Header__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__CountryList__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__UniversityList__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Filters__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Filters__ = __webpack_require__(73);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39243,8 +39247,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
 
 
 
@@ -39277,7 +39279,7 @@ var App = function (_Component) {
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                             __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["d" /* Switch */],
                             null,
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { exact: true, path: "/", component: __WEBPACK_IMPORTED_MODULE_6__Filters__["a" /* default */] })
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { exact: true, path: "/", component: __WEBPACK_IMPORTED_MODULE_4__Filters__["a" /* default */] })
                         )
                     )
                 )
@@ -65582,11 +65584,10 @@ var Header = function Header() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_router_dom__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__CountryList__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__UniversityList__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Table__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__SearchComponent__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__CountryList__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__UniversityList__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Table__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__SearchComponent__ = __webpack_require__(75);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65594,7 +65595,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 
 
 
@@ -65617,16 +65617,16 @@ var Filters = function (_Component) {
             sort: 1
         };
         _this.handleSort = _this.handleSort.bind(_this);
+        _this.handleChangeUni = _this.handleChangeUni.bind(_this);
+        _this.handleChange = _this.handleChange.bind(_this);
         return _this;
     }
 
     _createClass(Filters, [{
         key: "handleChange",
-        value: function handleChange() {
+        value: function handleChange(country_id) {
             var _this2 = this;
 
-            console.log(document.getElementById("#country"));
-            var country_id = document.getElementById("#country").value;
             if (country_id != -1) axios.get("/api/countries/" + country_id + "/universities").then(function (response) {
                 _this2.setState({
                     country_id: country_id,
@@ -65639,11 +65639,9 @@ var Filters = function (_Component) {
         }
     }, {
         key: "handleChangeUni",
-        value: function handleChangeUni() {
+        value: function handleChangeUni(university_id) {
             var _this3 = this;
 
-            console.log(document.getElementById("#university"));
-            var university_id = document.getElementById("#university").value;
             var country_id = this.state.country_id;
             if (university_id != -1) axios.get("/api/countries/" + country_id + "/universities/" + university_id + "/majors").then(function (response) {
                 _this3.setState({
@@ -65669,8 +65667,6 @@ var Filters = function (_Component) {
     }, {
         key: "handleSort",
         value: function handleSort(index) {
-            console.log(index);
-            console.log("LY");
             var _sort = this.state.sort;
             var sorter = [{
                 sort: function sort(list) {
@@ -65704,7 +65700,6 @@ var Filters = function (_Component) {
                 majors: majors,
                 sort: _sort * -1
             });
-            // console.log(index);
         }
     }, {
         key: "render",
@@ -65714,19 +65709,31 @@ var Filters = function (_Component) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
                 null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__SearchComponent__["a" /* default */], { onClick: function onClick(e) {
-                        return _this5.handleSearch();
-                    } }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CountryList__["a" /* default */], { onChange: function onChange(e) {
-                        return _this5.handleChange();
-                    } }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__UniversityList__["a" /* default */], {
-                    value: this.state.universities,
-                    onChange: function onChange(e) {
-                        return _this5.handleChangeUni();
-                    }
-                }),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__Table__["a" /* default */], { value: this.state.majors, onClick: this.handleSort })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    "div",
+                    { className: "row" },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__SearchComponent__["a" /* default */], { onClick: function onClick(e) {
+                                return _this5.handleSearch();
+                            } })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__CountryList__["a" /* default */], { onChange: this.handleChange })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "div",
+                        { className: "col-md-4" },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__UniversityList__["a" /* default */], {
+                            value: this.state.universities,
+                            onChange: this.handleChangeUni
+                        })
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__Table__["a" /* default */], { value: this.state.majors, onClick: this.handleSort })
             );
         }
     }]);
@@ -65780,30 +65787,42 @@ var Table = function (_Component) {
                     null,
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                         "th",
-                        { onClick: function onClick() {
+                        {
+                            style: { cursor: "pointer" },
+                            onClick: function onClick() {
                                 return _this2.props.onClick(0);
-                            } },
+                            }
+                        },
                         "Name"
                     ),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                         "th",
-                        { onClick: function onClick() {
+                        {
+                            style: { cursor: "pointer" },
+                            onClick: function onClick() {
                                 return _this2.props.onClick(1);
-                            } },
+                            }
+                        },
                         "Hour Cost"
                     ),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                         "th",
-                        { onClick: function onClick() {
+                        {
+                            style: { cursor: "pointer" },
+                            onClick: function onClick() {
                                 return _this2.props.onClick(2);
-                            } },
+                            }
+                        },
                         "Minimum Average"
                     ),
                     __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
                         "th",
-                        { onClick: function onClick() {
+                        {
+                            style: { cursor: "pointer" },
+                            onClick: function onClick() {
                                 return _this2.props.onClick(3);
-                            } },
+                            }
+                        },
                         "University"
                     )
                 ),
@@ -65875,22 +65894,29 @@ var SearchComponent = function (_Component) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 "div",
-                null,
+                { className: "input-group mb-3" },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
                     type: "text",
-                    Style: "margin: 0 auto",
                     className: "form-control",
+                    placeholder: "Search",
+                    "aria-label": "Search",
+                    "aria-describedby": "basic-addon2",
                     id: "searchbox"
                 }),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    "button",
-                    {
-                        className: "btn btn-primary btn-lg",
-                        onClick: function onClick() {
-                            return _this2.props.onClick();
-                        }
-                    },
-                    "Search"
+                    "div",
+                    { className: "input-group-append" },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        "button",
+                        {
+                            className: "btn btn-outline-secondary",
+                            onClick: function onClick() {
+                                return _this2.props.onClick();
+                            },
+                            type: "button"
+                        },
+                        "Search"
+                    )
                 )
             );
         }
